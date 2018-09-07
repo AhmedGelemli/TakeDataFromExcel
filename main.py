@@ -52,3 +52,16 @@ def opt_5():
  
 option = input("Select Option:")
 file_path = input("Excel File Path:")
+
+if (option == "1"):
+    opt_1()
+elif (option == "2"):
+    opt_2()
+elif (option == "3"):
+    opt_3()
+elif (option == "4"):
+    opt_4()
+elif (option == "5"):
+    opt_5()
+else:
+    print("Please select valid option!")
