@@ -2,8 +2,10 @@ import xlrd
 from openpyxl import load_workbook
 
 print("-----------------------------------------------------")
+print()
 print("Excel Data Claimer")
 print("by Ahmed Gelemli")
+print()
 print("-----------------------------------------------------")
 
 print('''
@@ -21,29 +23,37 @@ def opt_1():
     sheet = wb.sheet_by_index(0) 
     row = int(input("Row:"))
     column = int(input("Column:"))
-    sheet.cell_value(row, column)
+    value = sheet.cell_value(row, column)
+    print(value)
 
 def opt_2():
     filepath = file_path
     wb = load_workbook(filepath)
-    sheet_name = input("What do you want call sheet:")
+    sheet_name = input("Name of Sheet:")
     wb.create_sheet(sheet_name)
     wb.save(filepath)
+    print("Your command is succesfully complated!")
+    print(sheet_name + "has been added succesfully!")
 
 def opt_3():
     filepath = file_path
-    wb=load_workbook(filepath)
-    sheet_rmv = input("Which sheet do you want to copy:")
+    wb = load_workbook(filepath)
+    sheet_rmv = input("Which sheet do you want to remove:")
     wb.remove(wb.get_sheet_by_name(sheet_rmv))
     wb.save(filepath)
+    print("Your command is succesfully complated!")
+    print(sheet_rmv + " has been removed!")
 
 def opt_4():
     filepath = file_path
     wb = load_workbook(filepath)
     sheet_copy = input("Which sheet do you want to copy:")
-    source=wb.get_sheet_by_name(sheet_copy)
-    target=wb.copy_worksheet(source)
+    source = wb.get_sheet_by_name(sheet_copy)
+    wb.copy_worksheet(source)
     wb.save(filepath)
+    print()
+    print("Your command is succesfully complated!")
+    print("'" + sheet_copy + "' pasted as '" + sheet_copy + " Copy'!")
 
 def opt_5():
     filepath = file_path
@@ -53,6 +63,8 @@ def opt_5():
     string = input("What do you want to write to " + cell_num + " :")
     sheet[cell_num] = string
     wb.save(filepath)
+    print("Your command is succesfully complated!")
+    print(string + " is writed to " + cell_num + "!")
 
  
 option = input("Select Option:")
